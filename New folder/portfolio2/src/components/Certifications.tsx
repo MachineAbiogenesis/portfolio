@@ -1,12 +1,14 @@
 import { motion } from 'framer-motion';
 import { Award, ExternalLink } from 'lucide-react';
 
+const baseUrl = import.meta.env.BASE_URL;
+
 const certifications = [
     {
         id: 1,
         title: "Azure Cloud Fundamentals",
         issuer: "Microsoft",
-        image: "/azure-cert.png",
+        image: `${baseUrl}azure-cert.png`,
         link: "https://drive.google.com/file/d/1RipnqNVKSoUphcH-LzqEe3c2uYXV25FZ/view",
         color: "from-blue-500 to-cyan-500"
     },
@@ -14,7 +16,7 @@ const certifications = [
         id: 2,
         title: "TensorFlow Developer",
         issuer: "Google",
-        image: "/tensorflow-cert.png",
+        image: `${baseUrl}tensorflow-cert.png`,
         link: "https://www.credential.net/a4c26fca-e317-4d79-b4d8-697015233800",
         color: "from-orange-500 to-yellow-500"
     },
@@ -22,7 +24,7 @@ const certifications = [
         id: 3,
         title: "DeepLearning.AI Specialization",
         issuer: "Coursera",
-        image: "/deeplearning-cert.png",
+        image: `${baseUrl}deeplearning-cert.png`,
         link: "https://www.coursera.org/account/accomplishments/professional-cert/94TJ6GX5TGZX",
         color: "from-blue-600 to-indigo-600"
     },
@@ -30,7 +32,7 @@ const certifications = [
         id: 4,
         title: "SQL Certificate",
         issuer: "HackerRank",
-        image: "/sql-cert.png",
+        image: `${baseUrl}sql-cert.png`,
         link: "https://www.hackerrank.com/certificates/139b0ee1cda1",
         color: "from-green-500 to-emerald-500"
     }
