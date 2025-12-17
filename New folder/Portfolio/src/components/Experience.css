@@ -1,0 +1,47 @@
+.experience-list {
+    max-width: 800px;
+}
+
+.experience-item {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    padding: var(--spacing-xl) 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    transition: background-color var(--transition);
+}
+
+.experience-item:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+    padding-left: var(--spacing-md);
+    border-radius: var(--radius-md);
+}
+
+.experience-period {
+    font-size: var(--font-size-base);
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.experience-company {
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+    margin-bottom: var(--spacing-xs);
+}
+
+.experience-role {
+    font-size: var(--font-size-lg);
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-md);
+}
+
+.experience-desc {
+    font-size: var(--font-size-base);
+    color: var(--text-secondary);
+}
+
+@media (max-width: 600px) {
+    .experience-item {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-sm);
+    }
+}
