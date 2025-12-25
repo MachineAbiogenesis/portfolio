@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useMemo } from 'react';
 import { MapContainer, TileLayer, Polyline, CircleMarker, Popup, useMap } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 
@@ -18,22 +18,31 @@ const FitBounds = ({ bounds }) => {
 const Map = ({ stations, connections, routePath }) => {
     const mapRef = useRef(null);
 
-    // Create all network connections for visualization
-    const allConnections = [];
-    Object.entries(connections).forEach(([stationId, neighbors]) => {
-        const station = stations.find(s => s.id === stationId);
-        if (station) {
-            neighbors.forEach(neighborId => {
-                const neighbor = stations.find(s => s.id === neighborId);
-                if (neighbor) {
-                    allConnections.push([
-                        [station.lat, station.lng],
-                        [neighbor.lat, neighbor.lng]
-                    ]);
-                }
-            });
-        }
-    });
+    // Maharashtra bounds (approximate bounding box)
+    const maharashtraBounds = [
+        [15.6, 72.6],  // Southwest corner
+        [22.0, 80.9]   // Northeast corner
+    ];
+
+    // Memoize connections to prevent recalculation on every render
+    const allConnections = useMemo(() => {
+        const conn = [];
+        Object.entries(connections).forEach(([stationId, neighbors]) => {
+            const station = stations.find(s => s.id === stationId);
+            if (station) {
+                neighbors.forEach(neighborId => {
+                    const neighbor = stations.find(s => s.id === neighborId);
+                    if (neighbor) {
+                        conn.push([
+                            [station.lat, station.lng],
+                            [neighbor.lat, neighbor.lng]
+                        ]);
+                    }
+                });
+            }
+        });
+        return conn;
+    }, [stations, connections]);
 
     // Create route polyline if path exists
     const routePolyline = routePath && routePath.length > 0
@@ -59,6 +68,9 @@ const Map = ({ stations, connections, routePath }) => {
         <MapContainer
             center={[19.0760, 72.8777]} // Mumbai center
             zoom={11}
+            minZoom={8}
+            maxBounds={maharashtraBounds}
+            maxBoundsViscosity={1.0}
             style={{ height: '100vh', width: '100vw' }}
             ref={mapRef}
         >
