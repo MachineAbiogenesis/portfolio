@@ -5,20 +5,28 @@ const baseUrl = import.meta.env.BASE_URL;
 
 const certifications = [
     {
+        id: 5,
+        title: "GitHub Copilot",
+        issuer: "Microsoft",
+        image: `${baseUrl}github-copilot.svg`,
+        link: "https://learn.microsoft.com/en-us/users/nirajaher-5999/credentials/2f318dbce3976b07",
+        color: "from-gray-700 to-gray-900"
+    },
+    {
         id: 1,
         title: "Azure Cloud Fundamentals",
         issuer: "Microsoft",
-        image: `${baseUrl}azure-cert.png`,
-        link: "https://drive.google.com/file/d/1RipnqNVKSoUphcH-LzqEe3c2uYXV25FZ/view",
+        image: `${baseUrl}microsoft-badge.svg`,
+        link: "https://learn.microsoft.com/en-us/users/nirajaher-4121/credentials/1cb2f854f70dd2fa",
         color: "from-blue-500 to-cyan-500"
     },
     {
-        id: 2,
-        title: "TensorFlow Developer",
-        issuer: "Google",
-        image: `${baseUrl}tensorflow-cert.png`,
-        link: "https://www.credential.net/a4c26fca-e317-4d79-b4d8-697015233800",
-        color: "from-orange-500 to-yellow-500"
+        id: 4,
+        title: "SQL Certificate",
+        issuer: "HackerRank",
+        image: `${baseUrl}sql-cert.png`,
+        link: "https://www.hackerrank.com/certificates/139b0ee1cda1",
+        color: "from-green-500 to-emerald-500"
     },
     {
         id: 3,
@@ -29,12 +37,12 @@ const certifications = [
         color: "from-blue-600 to-indigo-600"
     },
     {
-        id: 4,
-        title: "SQL Certificate",
-        issuer: "HackerRank",
-        image: `${baseUrl}sql-cert.png`,
-        link: "https://www.hackerrank.com/certificates/139b0ee1cda1",
-        color: "from-green-500 to-emerald-500"
+        id: 2,
+        title: "TensorFlow Developer",
+        issuer: "Google",
+        image: `${baseUrl}tensorflow-badge.png`,
+        link: "https://www.credential.net/a4c26fca-e317-4d79-b4d8-697015233800",
+        color: "from-orange-500 to-yellow-500"
     }
 ];
 
@@ -56,7 +64,7 @@ const Certifications = () => {
                 </h2>
             </motion.div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 relative z-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 relative z-10">
                 {certifications.map((cert, index) => (
                     <motion.a
                         href={cert.link}
@@ -67,7 +75,7 @@ const Certifications = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: index * 0.1 }}
-                        className="group relative h-[380px] rounded-3xl overflow-hidden cursor-pointer bg-gradient-to-b from-white/[0.06] to-white/[0.02] border border-white/[0.08] hover:border-purple-500/40 transition-all duration-500 hover:shadow-[0_20px_50px_-15px_rgba(168,85,247,0.25)] hover:-translate-y-2"
+                        className="group relative h-[320px] rounded-2xl overflow-hidden cursor-pointer bg-gradient-to-b from-white/[0.06] to-white/[0.02] border border-white/[0.08] hover:border-purple-500/40 transition-all duration-500 hover:shadow-[0_20px_50px_-15px_rgba(168,85,247,0.25)] hover:-translate-y-2"
                     >
                         {/* Background Glow */}
                         <div className="absolute top-0 inset-x-0 h-full bg-gradient-to-b from-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
